@@ -1,9 +1,85 @@
+# ===================== 核心基础配置 =====================
 baseURL = 'https://effortful-lion.github.io/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = "ananke"
+languageCode = 'en-zh'
+title = 'Lion Blog'
+theme = "hugo-book"
 
-[taxonomies]
-  tag = "tags"
-  series = "series"
-  category = "categories"
+copyright = "[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)"
+
+# ===================== Book 主题基础配置 =====================
+disablePathToLower = true
+enableGitInfo = true
+
+# ===================== 内容渲染配置 =====================
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+  [markup.highlight]
+    style = "base16-snazzy"
+
+# ===================== 多语言配置 =====================
+[languages]
+  [languages.zh]
+    languageName = "Chinese"
+    contentDir = "content.zh"
+    weight = 1
+  [languages.en]
+    languageName = "English"
+    contentDir = "content.en"
+    weight = 2
+
+# ===================== 导航菜单配置（核心分类） =====================
+# 【核心】仅定义一级分类菜单，二级分类由目录自动生成（无需手动写）
+[[menu.home]]
+  name = "GO"
+  pageRef = "/docs/go/"        # 对应 content.zh/docs/go/
+  weight = 1
+  pre = "<i class='fas fa-code'></i>"  # 可选：添加图标（需引入font-awesome）
+
+[[menu.home]]
+  name = "游戏开发"
+  pageRef = "/docs/game/"
+  weight = 2
+
+[[menu.home]]
+  name = "数据库"
+  pageRef = "/docs/database/"
+  weight = 3
+
+[[menu.home]]
+  name = "消息队列"
+  pageRef = "/docs/消息队列/"
+  weight = 4
+
+[[menu.home]]
+  name = "搜索引擎"
+  pageRef = "/docs/search/"
+  weight = 5
+
+[[menu.home]]
+  name = "其他开源"
+  pageRef = "/docs/other-open-source/"
+  weight = 6
+
+# ===================== Book 主题自定义参数 =====================
+[params]
+  BookTheme = "dark"
+  # 【关键】指定 docs 为侧边栏根目录，自动渲染所有子分类/文章
+  BookSection = "docs"
+  # 显示文章摘要（可选）
+  BookShowSummary = true
+  # 按日期排序文章（新文章在前）
+  BookSortBy = "date"
+  BookSortDirection = "desc"
+
+  BookLastChangeLink = 'https://github.com/alex-shpak/hugo-book/commit/{{ .GitInfo.Hash }}'
+  BookEditLink = 'https://github.com/alex-shpak/hugo-book/edit/main/exampleSite/{{ .Path }}'
+  BookDateFormat = "2006-01-02"
+  BookSearch = true
+  BookComments = true
+  BookPortableLinks = 'warning'
+  BookServiceWorker = "precache"
+  BookTranslatedOnly = false
