@@ -1,6 +1,6 @@
 # ===================== 核心基础配置 =====================
 baseURL = 'https://effortful-lion.github.io/'
-languageCode = 'en-CN'
+languageCode = 'en-us'
 title = 'Lion Blog'
 theme = "hugo-book"
 # 所有文章图片的根路径
