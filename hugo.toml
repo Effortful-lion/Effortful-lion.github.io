@@ -1,8 +1,12 @@
 # ===================== 核心基础配置 =====================
 baseURL = 'https://effortful-lion.github.io/'
-languageCode = 'en-zh'
+languageCode = 'en-CN'
 title = 'Lion Blog'
 theme = "hugo-book"
+# 所有文章图片的根路径
+imageRoot = "/assets/"
+# 所有文章默认封面图
+# defaultCover = "/images/default-cover.jpg"
 
 copyright = "[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)"
 
@@ -26,10 +30,10 @@ enableGitInfo = true
     languageName = "Chinese"
     contentDir = "content.zh"
     weight = 1
-  [languages.en]
-    languageName = "English"
-    contentDir = "content.en"
-    weight = 2
+#  [languages.en]
+#    languageName = "English"
+#    contentDir = "content.en"
+#    weight = 2
 
 # ===================== 导航菜单配置（核心分类） =====================
 # 【核心】仅定义一级分类菜单，二级分类由目录自动生成（无需手动写）
