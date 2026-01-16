@@ -1,6 +1,6 @@
 # ===================== 核心基础配置 =====================
 baseURL = 'https://effortful-lion.github.io/'
-languageCode = 'zh-CN'  # 改为中文（匹配你的多语言配置）
+contentDir = "content.zh"  # 依然指向你的文件夹
 defaultContentLanguage = "zh"  # 关键：显式指定默认语言为zh（和[languages.zh]匹配）
 title = 'Lion Blog'
 theme = "hugo-book"
