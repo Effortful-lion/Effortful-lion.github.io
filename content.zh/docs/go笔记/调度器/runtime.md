@@ -15,7 +15,7 @@ weight: 1
 
 ## 什么是 Runtime
 
-![](../../../../static/assets/runtime-1768799609158.png)
+![](/static/assets/runtime-1768799609158.png)
 
 
 ### Runtime 作用
