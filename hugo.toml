@@ -21,12 +21,10 @@ enableGitInfo = true
     [markup.goldmark.renderer]
       unsafe = true
   [markup.tableOfContents]
-    startLevel = 1
+      startLevel = 2  # 目录起始层级（按需调整）
+      endLevel = 4
   [markup.highlight]
     style = "base16-snazzy"
-  [markup.tableOfContents]
-    startLevel = 2  # 目录起始层级（按需调整）
-    endLevel = 4
 
 # ===================== 多语言配置 =====================
 [languages]
