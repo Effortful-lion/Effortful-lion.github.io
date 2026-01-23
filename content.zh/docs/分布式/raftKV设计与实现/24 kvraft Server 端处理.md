@@ -1,6 +1,6 @@
 前面客户端的逻辑比较简单，接下来我们专注于分布式 KV 的服务端的处理，也就是说当客户端的请求发送过来之后，我们的后端的分布式 kv server 应该怎样处理这个请求。
 
-![22-1](//assets/22-1.PNG)
+![22-1](/assets/22-1.PNG)
 
 按照我们前面梳理的大致交互逻辑，客户端的请求到达之后，我们需要首先通过 raft 模块将其存储到 raft 日志中，回想一下我们在前面实现的 raft 库中，提供了一个 `Start` 入口方法，这个方法是 raft 接收外部请求的，我们会将请求通过这个方法传递过去。
 
@@ -28,7 +28,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 
 当 raft 集群中的 Leader 节点处理了 Start 请求之后，它会向其他的 Follower 节点发送 `AppendEntries` 消息，将日志同步到其他的 Follower 节点，当大多数的节点都正常处理之后，Leader 会收到消息，然后更新自己的 `commitIndex`，然后将日志通过 applyCh 这个通道发送过去。
 
-![24-2](//assets/24-2.PNG)
+![24-2](/assets/24-2.PNG)
 
 然后 kv server 收到 apply 消息之后，将命令应用到本地的状态机中，然后返回给客户端。
 

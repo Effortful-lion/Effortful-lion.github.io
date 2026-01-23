@@ -2,7 +2,7 @@
 
 接下来我们就需要回归到 shardkv 的具体逻辑了，这里贴一下我们的整体架构图，简单回顾一下：
 
-![31-1](//assets/31-1.PNG)
+![31-1](/assets/31-1.PNG)
 
 我们的 shardkv 是由多个 Replica Group 组成的，每个 Replica Group 又是由一个 raft 集群组成，使用 raft 共识算法保证数据的一致性。每个 Group 都负责了一部分 shard 的读写请求，全部的 Group 组合到一起，就是一个完整的 shardkv 服务。
 
@@ -12,7 +12,7 @@ Shardctrler 负责存储配置信息，主要是 shard 到 Group 的分配关系
 
 首先我们可以处理一种最简单的情况，即集群中只有一个 Group 的情况。
 
-![31-2](//assets/31-2.PNG)
+![31-2](/assets/31-2.PNG)
 
 在官方 Lab4 的提示中其实也说明了，单个 Group 的逻辑和我们在 Lab3 实现的分布式 KV 基本上是一样的，因为每个 shard 都在这个 Group 中，并不会涉及到 shard 的负载均衡。
 

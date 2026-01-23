@@ -12,7 +12,7 @@
 
 我们这个部分需要完成的分片的分布式 KV 存储系统由两个主要的部分组成。首先是复制组（Replica Group），它指的是处理一个或多个 shard 的 KV 服务，通常是由一个 Raft 集群组成的，所以一个完整的分片分布式 KV 系统中一般存在多个 Replica Group，每个 Group 负责一部分 shard 的读写请求和数据存储，多个 Replica Group 的组合又叫做 `multi raft`。
 
-![27-1](//assets/27-1.PNG)
+![27-1](/assets/27-1.PNG)
 
 第二个组成部分是 “shard controller”，它主要是存储系统元数据，一般是一些配置信息，例如每个 Group 应该负责哪些 shard，这个配置信息是有可能发生变化的。客户端首先会从 shard controller 获取请求 key 所属的 Group，并且 Group 也会从 shard controller 中获取它应该负责哪些 shard。shard controller 也一般是会保证高可用，因为如果 shard controller 发生了单点故障，那么整个分布式 KV 系统就不可用了，因此 shard controller 也会使用 raft 进行状态同步。
 
